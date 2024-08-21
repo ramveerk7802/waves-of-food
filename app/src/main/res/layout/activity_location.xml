@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.LocationActivity">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/chooseLocation"
+        app:layout_constraintHorizontal_bias="0.15"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        app:fontFamily="@font/lato_regular"
+        android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:letterSpacing="0.02"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/locationLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:boxStrokeWidth="0dp"
+        app:hintTextColor="@color/black"
+        app:boxStrokeWidthFocused="0dp"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        app:layout_constraintStart_toStartOf="@id/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        app:endIconDrawable="@drawable/location"
+        app:endIconMode="custom"
+        android:layout_marginEnd="25dp">
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/listOfLocation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/lato_regular"
+            android:inputType="none"
+            android:textColor="@color/black"
+            android:text="@string/location"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/locationLayout"
+        app:layout_constraintStart_toStartOf="@id/locationLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="textStart"
+        android:letterSpacing="0.01"
+        android:textSize="18sp"
+        app:fontFamily="@font/lato_regular"
+        android:layout_marginBottom="40dp"
+        android:textColor="@color/black"
+        android:text="@string/locationBottomText"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

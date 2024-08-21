@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Food</string>
+    <string name="wavesOfFood">Waves of Food</string>
+    <string name="deliverFavoriteFood">Deliver Favorite Food</string>
+    <string name="startText">Enjoy Restaurant Quality Meals\n at Home</string>
+    <string name="next">Next</string>
+    <string name="loginText">LogIn to Your Account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="continueWith">Continue with</string>
+    <string name="or">Or</string>
+    <string name="facebookText">Facebook</string>
+    <string name="googleText">Google</string>
+    <string name="login">Login</string>
+    <string name="dontHaveAccount">Don\'t Have Account?</string>
+    <string name="name">Name</string>
+    <string name="signUp">Sign Up Here</string>
+    <string name="signUpWith">Sign Up With</string>
+    <string name="createAccount">Create Account</string>
+    <string name="AlreadyHaveAccount">Already Have An Account</string>
+    <string name="chooseLocation">Choose Your location</string>
+    <string name="location">location</string>
+    <string name="locationBottomText">To provide you with the best dining experience, we need your permission to access your device\'s location. By enabling location services, we can offer personalized restaurant recommendations, accurate delivery estimates, and ensure a seamless food delivery experience."</string>
+    <string name="home">Home</string>
+    <string name="cart">Your Cart</string>
+    <string name="search">search</string>
+    <string name="profile">Profile</string>
+    <string name="history">History</string>
+    <string name="explore">Explore Your Favorite Food</string>
+    <string name="popular">Popular</string>
+    <string name="viewMenu">View Menu</string>
+    <string name="proceed">Proceed</string>
+    <string name="Add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="noCart">No Cart Available</string>
+    <string name="menu">Menu</string>
+    <string name="searchHint">Search here..</string>
+    <string name="recentBuy">Recent Buy</string>
+    <string name="previousBuy">Previous Buy</string>
+    <string name="buyAgain">Buy again</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
