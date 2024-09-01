@@ -9,21 +9,61 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.food.Adaptor.MenuAdaptor
+import com.example.food.Data.ItemModel
 import com.example.food.Data.PopularModel
 import com.example.food.R
 import com.example.food.databinding.FragmentSearchBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class SearchFragment : Fragment() {
     private lateinit var binding : FragmentSearchBinding
 
-    private val filterMenuList = mutableListOf<PopularModel>()
-    private val originalMenuList = mutableListOf<PopularModel>()
+    private lateinit var filterMenuList : MutableList<ItemModel>
+    private lateinit var originalMenuList:MutableList<ItemModel>
     private lateinit var adaptor: MenuAdaptor
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // initialize firebase and database
+
+        auth=Firebase.auth
+        database = Firebase.database.reference
+        originalMenuList = mutableListOf()
+        filterMenuList = mutableListOf()
+
+        val menuReference = database.child("AllMenu")
+
+        menuReference.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(items in snapshot.children){
+                    val model = items.getValue(ItemModel::class.java)
+                    if(model!=null)
+                        originalMenuList.add(model)
+                }
+                adaptor.updateList(originalMenuList)
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+
+
 
     }
 
@@ -32,18 +72,14 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchBinding.inflate(inflater,container,false)
-        originalMenuList.add(PopularModel(R.drawable.pizza_banner_a,"Pizza",160))
-        originalMenuList.add(PopularModel(R.drawable.icecream_banner_b," ice cream",100))
-        originalMenuList.add(PopularModel(R.drawable.buger_banner_a,"First",100))
-        originalMenuList.add(PopularModel(R.drawable.pizza_banner_a,"Pizza",160))
-        originalMenuList.add(PopularModel(R.drawable.buger_banner_a,"First burger",100))
-        originalMenuList.add(PopularModel(R.drawable.pizza_banner_a,"Pizza",160))
-        originalMenuList.add(PopularModel(R.drawable.icecream_banner_a,"Ice Cream",160))
-        originalMenuList.add(PopularModel(R.drawable.pizza_banner_b,"Pizza seccond",120))
+
+
+
         setupSearchView()
         adaptor = MenuAdaptor(originalMenuList)
         binding.searchRecycleView.layoutManager= LinearLayoutManager(requireContext())
         binding.searchRecycleView.adapter=adaptor
+
 
 
         return binding.root
@@ -66,7 +102,7 @@ class SearchFragment : Fragment() {
     private fun filterMenuItem(query: String) {
         filterMenuList.clear()
         originalMenuList.forEach { item ->
-            if(item.itemName.contains(query, ignoreCase = true)){
+            if(item.foodName?.contains(query, ignoreCase = true) == true){
                 filterMenuList.add(item)
             }
         }

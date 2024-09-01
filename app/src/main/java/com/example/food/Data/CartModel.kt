@@ -1,8 +1,8 @@
 package com.example.food.Data
 
 data class CartModel(
-     var image:Int,
-     var itemName:String,
-     var quantity:Int,
-     var price:Int
+    val image: String?=null,
+    var itemName:String?=null,
+    var quantity:Int?=null,
+    var price:Int?=null
     )

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Food</string>
+    <string name="app_name">WaveBites</string>
     <string name="wavesOfFood">Waves of Food</string>
     <string name="deliverFavoriteFood">Deliver Favorite Food</string>
     <string name="startText">Enjoy Restaurant Quality Meals\n at Home</string>

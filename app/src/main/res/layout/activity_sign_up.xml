@@ -197,7 +197,7 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/logInButton"
+        android:id="@+id/createAccountButton"
         android:layout_width="200dp"
         android:layout_height="55dp"
         android:text="@string/createAccount"
@@ -208,7 +208,7 @@
         app:layout_constraintStart_toStartOf="@id/linear3"
         app:layout_constraintTop_toBottomOf="@id/linear3"
         android:layout_marginTop="15dp"
-        app:backgroundTint="@color/green"/>
+        app:backgroundTint="@color/green2"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/already"
         android:layout_width="wrap_content"
@@ -219,9 +219,9 @@
         android:padding="2dp"
         android:fontFamily="@font/yeon_sung_regular"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/logInButton"
-        app:layout_constraintEnd_toEndOf="@id/logInButton"
-        app:layout_constraintTop_toBottomOf="@id/logInButton"
+        app:layout_constraintStart_toStartOf="@id/createAccountButton"
+        app:layout_constraintEnd_toEndOf="@id/createAccountButton"
+        app:layout_constraintTop_toBottomOf="@id/createAccountButton"
         app:layout_constraintVertical_bias="0.1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
