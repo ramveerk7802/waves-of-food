@@ -6,14 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
-import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.food.Activity.PayOutActivity
-import com.example.food.Adaptor.CartAdaptor
+
+import com.example.food.adaptor.CartAdaptor
 import com.example.food.Data.CartModel
+import com.example.food.activity.PayOutActivity
 import com.example.food.databinding.FragmentCartBinding
 
 import com.google.firebase.auth.FirebaseAuth
@@ -61,8 +61,8 @@ class CartFragment : Fragment() {
 
         binding.cartRecycleView.apply {
             layoutManager= LinearLayoutManager(requireContext())
-            adaptor =CartAdaptor(mutableListOf())
-            adapter = adaptor
+            adaptor =CartAdaptor(mutableListOf(),auth,database)
+            this.adapter = adaptor
         }
 
         lifecycleScope.launch {
@@ -71,8 +71,10 @@ class CartFragment : Fragment() {
                 cartList = fetchData(userId)
 
                 if (cartList.isEmpty()) {
-                    binding.proceedButton.visibility = INVISIBLE
+                    adaptor.updateList(mutableListOf())
+                    binding.proceedButton.visibility = GONE
                     binding.noCartText.visibility = VISIBLE
+
                 } else {
                     adaptor.updateList(cartList)
                     binding.proceedButton.visibility = VISIBLE
@@ -84,10 +86,18 @@ class CartFragment : Fragment() {
 
 
         binding.proceedButton.setOnClickListener{
-            startActivity(Intent(requireContext(),PayOutActivity::class.java))
+            getOrderItem();
+            startActivity(Intent(requireContext(), PayOutActivity::class.java))
+
         }
 
     }
+
+    private fun getOrderItem() {
+        val orderIdReference = database.child("User").child(auth.currentUser?.uid!!).child("Cart")
+
+    }
+
     private suspend fun fetchData(userId:String):MutableList<CartModel>{
 
         return withContext(Dispatchers.IO){

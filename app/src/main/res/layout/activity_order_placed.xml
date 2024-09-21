@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.OrderPlacedActivity">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:lottie_rawRes="@raw/order_placed_lottie"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.3"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/orderPlaced"
+        app:fontFamily="@font/lato_regular"
+        android:letterSpacing="0.05"
+        app:layout_constraintStart_toStartOf="@id/lottie"
+        app:layout_constraintEnd_toEndOf="@id/lottie"
+        app:layout_constraintTop_toBottomOf="@id/lottie"
+        android:textColor="@color/green2"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/okBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ok"
+        app:layout_constraintStart_toStartOf="@id/text"
+        app:layout_constraintEnd_toEndOf="@id/text"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        android:layout_marginTop="@dimen/_10dp"
+        app:backgroundTint="@color/green2"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,13 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.food.Adaptor.MenuAdaptor
+import com.example.food.adaptor.MenuAdaptor
 import com.example.food.Data.ItemModel
-import com.example.food.Data.PopularModel
-import com.example.food.R
 import com.example.food.databinding.FragmentSearchBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -76,7 +73,7 @@ class SearchFragment : Fragment() {
 
 
         setupSearchView()
-        adaptor = MenuAdaptor(originalMenuList)
+        adaptor = MenuAdaptor(originalMenuList,auth,database)
         binding.searchRecycleView.layoutManager= LinearLayoutManager(requireContext())
         binding.searchRecycleView.adapter=adaptor
 

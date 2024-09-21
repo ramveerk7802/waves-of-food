@@ -1,15 +1,12 @@
-package com.example.food.Activity.SignIn
+package com.example.food.activity.signIn
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.denzcoskun.imageslider.animations.Toss
 import com.example.food.Data.UserModel
 import com.example.food.MainActivity
 import com.example.food.R
@@ -91,7 +88,7 @@ class LogInActivity : AppCompatActivity() {
 
     private fun saveData(name: String, email: String, plainPassword: String,uid:String) {
         val userReference = database.child("User").child(uid)
-        val model = UserModel(name,email,plainPassword)
+        val model = UserModel(name,email,"","",plainPassword)
         userReference.setValue(model)
             .addOnSuccessListener {
                 val intent1 =  Intent(this,MainActivity::class.java)

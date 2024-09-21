@@ -4,5 +4,6 @@ data class CartModel(
     val image: String?=null,
     var itemName:String?=null,
     var quantity:Int?=null,
-    var price:Int?=null
+    var price:Int?=null,
+    val itemId:String?=null
     )

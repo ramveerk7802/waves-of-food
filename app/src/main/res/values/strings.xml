@@ -40,5 +40,6 @@
     <string name="buyAgain">Buy again</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="orderPlaced">Order Placed successfully</string>
 
 </resources>

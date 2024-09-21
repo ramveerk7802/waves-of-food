@@ -10,13 +10,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.food.Adaptor.PopularAdaptor
-import com.example.food.Data.PopularModel
+import com.example.food.adaptor.MenuAdaptor
+import com.example.food.Data.ItemModel
 import com.example.food.R
 import com.example.food.databinding.FragmentHomeBinding
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
 class HomeFragment : Fragment() {
     private  lateinit var binding: FragmentHomeBinding
+    private lateinit var auth: FirebaseAuth;
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +44,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // initialize firebase
+        auth = Firebase.auth
+        database = Firebase.database.reference
 
         // open for bottom sheetDialog
         binding.viewMenuButton.setOnClickListener{
@@ -62,23 +77,45 @@ class HomeFragment : Fragment() {
 
             }
         })
-        val popularList= mutableListOf<PopularModel>()
-        popularList.add(PopularModel(R.drawable.buger_banner_a,"First burghjklghjkgfhjkdgfh tyuhityghj dgfhghjger",100))
-        popularList.add(PopularModel(R.drawable.pizza_banner_a,"Pizza",160))
-        popularList.add(PopularModel(R.drawable.buger_banner_a,"First burger",100))
-        popularList.add(PopularModel(R.drawable.icecream_banner_a,"Ice Cream",160))
-        popularList.add(PopularModel(R.drawable.pizza_banner_b,"Pizza seccond",120))
-        popularList.add(PopularModel(R.drawable.pizza_banner_a,"Pizza",160))
-        popularList.add(PopularModel(R.drawable.icecream_banner_b," ice cream",100))
-        popularList.add(PopularModel(R.drawable.pizza_banner_a,"Pizza",160))
-        val adapter =PopularAdaptor(popularList)
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.popularRecycleView.layoutManager=layoutManager
-        binding.popularRecycleView.adapter=adapter
+        val popularList= mutableListOf<ItemModel>()
+
+
+        // fetch data from database
+
+        val menuReference = database.child("AllMenu")
+        menuReference.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(snapshot1 in snapshot.children){
+                    val itemModel = snapshot1.getValue(ItemModel::class.java)
+                    itemModel?.let { popularList.add(it) }
+                }
+                // display popular adaptor
+                showPopularAdaptor(popularList,auth,database)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+
+
 
     }
 
-    companion object {
+    private fun showPopularAdaptor(popularList: MutableList<ItemModel>,auth: FirebaseAuth,database: DatabaseReference) {
+
+        val index = popularList.indices.toList().shuffled()
+        val noOfItemShow =6
+        val subSetItem = index.take(noOfItemShow).map { popularList[it] }.toMutableList()
+
+        binding.popularRecycleView.apply {
+            this.layoutManager = LinearLayoutManager(requireContext())
+            this.adapter = MenuAdaptor(subSetItem,auth,database)
+
+        }
 
     }
+
 }

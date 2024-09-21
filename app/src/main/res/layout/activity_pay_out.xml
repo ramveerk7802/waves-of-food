@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.PayOutActivity">
+    tools:context=".activity.PayOutActivity">
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -47,6 +47,7 @@
         android:padding="5dp"
         android:hint="@string/name">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -56,8 +57,9 @@
         android:layout_height="wrap_content"
         app:hintTextColor="@color/black"
         android:padding="5dp"
-        android:hint="Address">
+        android:hint="Enter the full address">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -68,6 +70,7 @@
         android:padding="5dp"
         android:hint="Mobile Number">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>

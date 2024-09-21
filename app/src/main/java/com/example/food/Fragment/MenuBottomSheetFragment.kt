@@ -1,15 +1,12 @@
 package com.example.food.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.food.Adaptor.MenuAdaptor
+import com.example.food.adaptor.MenuAdaptor
 import com.example.food.Data.ItemModel
-import com.example.food.Data.PopularModel
-import com.example.food.R
 import com.example.food.databinding.FragmentMenuBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -68,7 +65,7 @@ class MenuBottomSheetFragment : BottomSheetDialogFragment() {
 
         binding = FragmentMenuBottomSheetBinding.inflate(inflater,container,false)
 
-        adaptor = MenuAdaptor(menuList)
+        adaptor = MenuAdaptor(menuList,auth,database)
         binding.menuRecycleView.layoutManager=LinearLayoutManager(requireContext())
         binding.menuRecycleView.adapter=adaptor
         return binding.root

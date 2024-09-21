@@ -13,26 +13,29 @@
         android:theme="@style/Theme.Food"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.PayOutActivity"
+            android:name=".activity.OrderPlacedActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.FoodNameActivity"
+            android:name=".activity.PayOutActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LocationActivity"
+            android:name=".activity.FoodNameActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SignIn.SignUpActivity"
+            android:name=".activity.LocationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SignIn.LogInActivity"
+            android:name=".activity.signIn.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.StartActivity"
+            android:name=".activity.signIn.LogInActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.WelcomeActivity"
-            android:exported="true" >
+            android:name=".activity.StartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,8 +44,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
     </application>
 
 </manifest>

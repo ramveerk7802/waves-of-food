@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.food.Adaptor.BuyAgainAdaptor
+import com.example.food.adaptor.BuyAgainAdaptor
 import com.example.food.Data.PopularModel
 import com.example.food.R
 import com.example.food.databinding.FragmentHistoryBinding

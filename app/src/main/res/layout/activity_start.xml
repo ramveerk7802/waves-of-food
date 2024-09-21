@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.StartActivity">
+    tools:context=".activity.StartActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.2"/>
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/image"
         app:layout_constraintEnd_toEndOf="@id/image"
