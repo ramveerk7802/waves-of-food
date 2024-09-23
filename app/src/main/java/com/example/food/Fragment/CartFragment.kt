@@ -60,7 +60,7 @@ class CartFragment : Fragment() {
 
 
         binding.cartRecycleView.apply {
-            layoutManager= LinearLayoutManager(requireContext())
+            layoutManager= LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             adaptor =CartAdaptor(mutableListOf(),auth,database)
             this.adapter = adaptor
         }
@@ -76,9 +76,11 @@ class CartFragment : Fragment() {
                     binding.noCartText.visibility = VISIBLE
 
                 } else {
+
                     adaptor.updateList(cartList)
                     binding.proceedButton.visibility = VISIBLE
                     binding.noCartText.visibility = GONE
+                    binding.proceedButton.visibility= VISIBLE
                 }
             }
 

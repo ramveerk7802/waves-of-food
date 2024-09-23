@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         app:hintTextColor="@color/black"
         android:padding="5dp"
-        android:hint="Enter the full address">
+        android:hint="@string/communication">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtAddress"
             android:layout_width="match_parent"

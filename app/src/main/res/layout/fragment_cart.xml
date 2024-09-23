@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:text="@string/proceed"
         app:elevation="@dimen/_10dp"
+        android:visibility="gone"
         app:backgroundTint="@color/green2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
